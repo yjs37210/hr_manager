@@ -30,14 +30,14 @@ public class CellRendererVac extends DefaultTableCellRenderer {
 		for (int j = 0; j < list.size(); j++) {
 			cnt++;
 			switch (list.get(j).getRank()) {
-			case "일경":
+			case "이경":
 				color = new Color(255, 255, 0); // 노랑색
 				break;
-			case "이경":
+			case "일경":
 				color = new Color(255, 165, 0); // 주황색
 				break;
 			case "상경":
-				color = new Color(107, 142, 35); // 노랑색
+				color = new Color(107, 142, 35); // 초록색
 				break; // 상경에 break; 넣어줬습니다
 			case "수경":
 				color = new Color(65, 105, 225); // 파랑색
