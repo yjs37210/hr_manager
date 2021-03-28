@@ -146,35 +146,20 @@ public class SubmitDAO {
 		return list;
 	}
 
-	public int delete_allow(int sub_number) {
-		int result = 0;
-		try {
-			getConnect();
-			String sql = "delete from allow where sub_number = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, sub_number);
-			result = psmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			getClose();
-		}
-		return result;
-	}
-	public int delete_submit(int sub_number) {
-		int result = 0;
-		try {
-			getConnect();
-			String sql = "delete from submit where sub_number = ?";
-			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, sub_number);
-			result = psmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			getClose();
-		}
-		return result;
-	}
+//	public int delete_submit(int sub_number) {
+//		int result = 0;
+//		try {
+//			getConnect();
+//			String sql = "delete from submit where sub_number = ?";
+//			psmt = conn.prepareStatement(sql);
+//			psmt.setInt(1, sub_number);
+//			result = psmt.executeUpdate();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			getClose();
+//		}
+//		return result;
+//	}
 
 }

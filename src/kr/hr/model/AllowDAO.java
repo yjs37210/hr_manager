@@ -38,20 +38,25 @@ public class AllowDAO {
 
 	public int insertAllow(AllowVO vo) {
 		int result = -1;
+		System.out.println("여기는 result 선언");
 		try {
 			getConnect();
+			System.out.println("여기는 SQL문 선언 전");
 			String sql = "insert into allow" + " values (?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
+			System.out.println("여기는 prepareStatement 후");
 			psmt.setString(1, vo.getManager_id());
 			psmt.setInt(2, vo.getSub_number());
 			psmt.setString(3, vo.getYn());
 			psmt.setString(4, vo.getNote());
 			result = psmt.executeUpdate();
+			System.out.println("여기는 executeUpdate 후");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			getClose();
 		}
+		System.out.println("result : " + result);
 		return result;
 	}
 

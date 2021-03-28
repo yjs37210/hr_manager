@@ -60,20 +60,22 @@ public class Reject {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, manager_id + "가 클릭했다." + sub_number + "를. 신청번호!", "확인", JOptionPane.INFORMATION_MESSAGE);
 				String yn = "N";
 				String note = textField.getText();
 				AllowVO vo = new AllowVO(manager_id, sub_number, yn, note);
 				AllowDAO dao = new AllowDAO();
+				System.out.println("여기부터 insertAllow 시작");
 				int cnt = dao.insertAllow(vo);
 				if(cnt < 0) {
 					JOptionPane.showMessageDialog(null, "휴가 재가 오류", "오류", JOptionPane.INFORMATION_MESSAGE);
 				}
-				SubmitDAO sdao = new SubmitDAO();
-				cnt = sdao.delete_allow(vo.getSub_number());
-				if(cnt < 0) {
-					JOptionPane.showMessageDialog(null, "휴가 재가 오류", "오류", JOptionPane.INFORMATION_MESSAGE);
-				}
-				cnt = sdao.delete_submit(vo.getSub_number());
+//				SubmitDAO sdao = new SubmitDAO();
+//				cnt = sdao.delete_allow(vo.getSub_number());
+//				if(cnt < 0) {
+//					JOptionPane.showMessageDialog(null, "휴가 재가 오류", "오류", JOptionPane.INFORMATION_MESSAGE);
+//				}
+//				cnt = sdao.delete_submit(vo.getSub_number());
 				if(cnt < 0) {
 					JOptionPane.showMessageDialog(null, "휴가 재가 오류", "오류", JOptionPane.INFORMATION_MESSAGE);
 				}else {
