@@ -72,13 +72,16 @@ values('SMART', 'KING', '1', 'HI', 1);
 create or replace view submitTable
 as select i.mil_id, i.rank, i.name, i.job, s.vac_type, s.sub_date, s.end_date, s.reason, s.sub_number, a.yn
 from information i, submit s, allow a 
-where i.mil_id = s.mil_id and a.sub_number(+) = s.sub_number;
+where i.mil_id = s.mil_id and a.sub_number(+) = s.sub_number and a.yn != 'N';
 
-select * from submitTable;
+select * from SUBMITTABLE;
+select * from result;
+select * from allow;
 select * from submit;
 
+create or replace view result
+as select i.manager_id, i.name, s.sub_date, s.vac_type, s.reason, a.yn, a.note, i.mil_id
+from information i, submit s, allow a
+where i.mil_id = s.mil_id and s.sub_number(+) = a.sub_number;
 
-create view result
-as select i.manager_id, i.name, s.sub_date, s.vac_type, s.reason, a.yn, a.note
-from information i, submit2 s, allow a
-where i.mil_id = s.mil_id and s.sub_number = a.sub_number;
+select * from INFORMATION;
